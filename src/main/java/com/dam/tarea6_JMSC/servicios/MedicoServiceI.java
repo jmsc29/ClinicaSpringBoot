@@ -8,6 +8,6 @@ public interface MedicoServiceI {
 	
 	public List<Medico> obtenerMedicos();
 	
-	public void insertarPaciente(Medico medico);
+	public void insertarMedico(Medico medico);
 
 }

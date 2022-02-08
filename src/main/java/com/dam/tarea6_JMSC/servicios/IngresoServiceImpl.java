@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dam.tarea6_JMSC.entidades.Ingreso;
+import com.dam.tarea6_JMSC.entidades.Paciente;
 import com.dam.tarea6_JMSC.repositorios.IngresoRepositorioI;
 import com.dam.tarea6_JMSC.repositorios.MedicoRepositorioI;
 
@@ -23,4 +24,19 @@ public class IngresoServiceImpl implements IngresoServiceI {
 		ingresoRepositorio.save(ingreso);
 	}
 
+	@Override
+	public List<Ingreso> ingresoDePaciente(Long codigoPaciente) {
+		return ingresoRepositorio.findByPaciente(codigoPaciente);
+	}
+
+	@Override
+	public List<Ingreso> ingresoDeMedico(Long codigoMedico) {
+		return ingresoRepositorio.findByMedico(codigoMedico);
+	}
+
+	@Override
+	public void eliminarIngresoPaciente(Paciente paciente) {
+		ingresoRepositorio.deleteByPaciente(paciente);
+	}
+	
 }

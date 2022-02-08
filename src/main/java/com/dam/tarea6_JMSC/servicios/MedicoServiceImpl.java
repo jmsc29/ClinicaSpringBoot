@@ -18,9 +18,8 @@ public class MedicoServiceImpl implements MedicoServiceI {
 	}
 
 	@Override
-	public void insertarPaciente(Medico medico) {
+	public void insertarMedico(Medico medico) {
 		medicoRepositorio.save(medico);
-
 	}
 
 }

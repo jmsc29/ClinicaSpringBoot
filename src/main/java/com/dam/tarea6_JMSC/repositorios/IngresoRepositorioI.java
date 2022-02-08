@@ -13,5 +13,6 @@ public interface IngresoRepositorioI  extends JpaRepository<Ingreso, Long> {
 	
 	List<Ingreso> findByMedico(Long codigoMedico);
 
-	//Long deleteBy(Long codigoPaciente);
+	void deleteByPaciente(Paciente paciente);
+	
 }
