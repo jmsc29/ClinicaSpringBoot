@@ -5,8 +5,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import com.dam.tarea6_JMSC.entidades.Ingreso;
+import com.dam.tarea6_JMSC.entidades.Paciente;
 
 @Repository
 public interface IngresoRepositorioI  extends JpaRepository<Ingreso, Long> {
+	
+	List<Ingreso> findByPaciente(Long codigoPaciente);
+	
+	List<Ingreso> findByMedico(Long codigoMedico);
 
+	Long deleteBy(Long codigoPaciente);
 }
