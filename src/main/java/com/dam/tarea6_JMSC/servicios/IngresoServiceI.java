@@ -14,7 +14,7 @@ public interface IngresoServiceI {
 	
 	public List<Ingreso> ingresoDeMedico(Long codigoMedico);
 	
-	public void eliminarIngresoPaciente(Paciente paciente);
+	public void eliminarIngresoPaciente(Long codigoPaciente);
 	
 
 
