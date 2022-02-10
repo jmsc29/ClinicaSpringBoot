@@ -9,10 +9,10 @@ import com.dam.tarea6_JMSC.entidades.*;
 @Repository
 public interface IngresoRepositorioI  extends JpaRepository<Ingreso, Long> {
 	
-	List<Ingreso> findByPaciente(Long codigoPaciente);
+	List<Ingreso> findByIdCodigoPaciente(Long codigoPaciente);
 	
-	List<Ingreso> findByMedico(Long codigoMedico);
+	List<Ingreso> findByIdCodigoMedico(Long codigoMedico);
 
-	void deleteByPaciente(Paciente paciente);
+	void deleteByIdCodigoPaciente(Long codigoPaciente);
 	
 }

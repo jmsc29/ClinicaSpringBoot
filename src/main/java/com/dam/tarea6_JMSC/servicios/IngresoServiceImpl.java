@@ -26,12 +26,12 @@ public class IngresoServiceImpl implements IngresoServiceI {
 
 	@Override
 	public List<Ingreso> ingresoDePaciente(Long codigoPaciente) {
-		return ingresoRepositorio.findByPaciente(codigoPaciente);
+		return ingresoRepositorio.findByIdCodigoPaciente(codigoPaciente);
 	}
 
 	@Override
 	public List<Ingreso> ingresoDeMedico(Long codigoMedico) {
-		return ingresoRepositorio.findByMedico(codigoMedico);
+		return ingresoRepositorio.findByIdCodigoMedico(codigoMedico);
 	}
 
 	@Override
