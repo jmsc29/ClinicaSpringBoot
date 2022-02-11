@@ -3,12 +3,12 @@ package com.dam.tarea6_JMSC.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dam.tarea6_JMSC.entidades.Ingreso;
-import com.dam.tarea6_JMSC.entidades.Paciente;
 import com.dam.tarea6_JMSC.repositorios.IngresoRepositorioI;
-import com.dam.tarea6_JMSC.repositorios.MedicoRepositorioI;
 
+@Service
 public class IngresoServiceImpl implements IngresoServiceI {
 	
 	@Autowired
