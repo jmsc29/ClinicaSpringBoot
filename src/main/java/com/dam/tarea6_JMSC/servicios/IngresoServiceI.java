@@ -10,11 +10,11 @@ public interface IngresoServiceI {
 	
 	public void insertarIngreso(Ingreso ingreso);
 	
-	public List<Ingreso> ingresoDePaciente(Long codigoPaciente);
+	public List<Ingreso> ingresoDePaciente(Paciente paciente);
 	
-	public List<Ingreso> ingresoDeMedico(Long codigoMedico);
+	public List<Ingreso> ingresoDeMedico(Medico medico);
 	
-	public void eliminarIngresoPaciente(Long codigoPaciente);
+	public void eliminarIngresoPaciente(Paciente paciente);
 	
 
 
