@@ -23,7 +23,7 @@ public class ClinicaMain implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("------------------------------");
+		/*System.out.println("------------------------------");
 		
 		final List<Medico> MedicosList = medicoService.obtenerMedicos();
 		if(!CollectionUtils.isEmpty(MedicosList)) {
@@ -32,7 +32,7 @@ public class ClinicaMain implements CommandLineRunner{
 			}
 		}
 		
-		System.out.println("------------------------------");
+		System.out.println("------------------------------");*/
 		
 	}
 

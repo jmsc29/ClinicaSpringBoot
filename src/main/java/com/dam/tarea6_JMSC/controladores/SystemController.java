@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemController {
 	
 	
-		@GetMapping("/nombre")
-		public String mostrarNombre() {
-			return "Este es el título de la clínica";
+	//Capta cualquier solicitud
+		@GetMapping
+		public String showIndex() {
+			return "inicio";
 		}
-
 }
