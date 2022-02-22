@@ -2,6 +2,7 @@ package com.dam.tarea6_JMSC.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,8 +17,13 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "ingresos")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Ingreso implements Serializable {
 
 	/**
@@ -36,12 +42,12 @@ public class Ingreso implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaIngreso;
 	
-	//@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "codigoMedico")
 	private Medico medico;
 	
-	//@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "codigoPaciente")
 	private Paciente paciente;

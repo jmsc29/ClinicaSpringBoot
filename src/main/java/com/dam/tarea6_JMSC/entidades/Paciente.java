@@ -17,12 +17,17 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "pacientes")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Paciente implements Serializable{
 
 	/**
-	 * asdf
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -47,7 +52,7 @@ public class Paciente implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
-	//@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente", cascade = CascadeType.ALL)
 	private List<Ingreso> ingresos;
 

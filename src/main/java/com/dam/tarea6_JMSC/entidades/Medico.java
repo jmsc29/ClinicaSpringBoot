@@ -51,7 +51,7 @@ public class Medico implements Serializable {
 	
 	private String especialidad;
 	
-	//@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medico", cascade = CascadeType.ALL)
 	private List<Ingreso> ingresos;
 

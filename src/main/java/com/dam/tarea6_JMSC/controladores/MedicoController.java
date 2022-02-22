@@ -30,6 +30,7 @@ public class MedicoController {
 	@GetMapping("")
 	public ResponseEntity<List<Medico>> list(){
 		List<Medico> list = medicoService.obtenerMedicos();
+		
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	
