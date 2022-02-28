@@ -1,6 +1,7 @@
 package com.dam.tarea6_JMSC.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,13 @@ public class IngresoServiceImpl implements IngresoServiceI {
 	}
 
 	@Override
-	public void eliminarIngresoPaciente(Paciente paciente) {
-		ingresoRepositorio.deleteByPaciente(paciente);
+	public void borrarIngreso(Long codigoIngreso) {
+		ingresoRepositorio.deleteById(codigoIngreso);
+	}
+	
+	@Override
+	public Optional<Ingreso> getOne(Long codigoIngreso) {
+		return ingresoRepositorio.findById(codigoIngreso);
 	}
 	
 }

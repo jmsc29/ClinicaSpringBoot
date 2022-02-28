@@ -25,6 +25,22 @@ import lombok.NoArgsConstructor;
 @Table(name = "ingresos")
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Ingreso implements Serializable {
+	
+	
+
+	public Ingreso(String numHabitacion, String cama, String fechaIngreso, Medico medico, Paciente paciente) {
+		this.numHabitacion = numHabitacion;
+		this.cama = cama;
+		this.fechaIngreso = fechaIngreso;
+		this.medico = medico;
+		this.paciente = paciente;
+	}
+
+	public Ingreso(Long codigoIngreso) {
+		this.codigoIngreso = codigoIngreso;
+	}
+
+
 
 	/**
 	 * 
@@ -39,8 +55,7 @@ public class Ingreso implements Serializable {
 	
 	private String cama;
 	
-	@Temporal(TemporalType.DATE)
-	private Date fechaIngreso;
+	private String fechaIngreso;
 	
 	@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

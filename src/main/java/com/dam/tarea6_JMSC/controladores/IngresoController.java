@@ -18,60 +18,58 @@ import com.dam.tarea6_JMSC.entidades.*;
 import com.dam.tarea6_JMSC.servicios.IngresoServiceImpl;
 import com.dam.tarea6_JMSC.servicios.MedicoServiceI;
 import com.dam.tarea6_JMSC.servicios.MedicoServiceImpl;
+import com.dam.tarea6_JMSC.servicios.PacienteServiceImpl;
+
 import org.apache.commons.lang3.StringUtils;
 
 @RestController
-@RequestMapping("/medicos")
+@RequestMapping("/ingresos")
 @CrossOrigin(origins = "http://localhost:4200")
-public class MedicoController {
+public class IngresoController {
 	
 	@Autowired
 	private MedicoServiceImpl medicoService;
 	
 	@Autowired
+	private PacienteServiceImpl pacienteService;
+	
+	@Autowired
 	private IngresoServiceImpl ingresoService;
 	
 	@GetMapping("")
-	public ResponseEntity<List<Medico>> list(){
-		List<Medico> list = medicoService.obtenerMedicos();
+	public ResponseEntity<List<Ingreso>> list(){
+		List<Ingreso> list = ingresoService.obtenerIngresos();
+		
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/ingresosMedico/{id}")
+	public ResponseEntity<List<Ingreso>> listIngresosMedicos(@PathVariable("id")Long id){
+		Medico medico = new Medico(id);
+		List<Ingreso> list = ingresoService.ingresoDeMedico(medico);
+		
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/ingresosPaciente/{id}")
+	public ResponseEntity<List<Ingreso>> listIngresosPacientes(@PathVariable("id")Long id){
+		Paciente paciente = new Paciente(id);
+		List<Ingreso> list = ingresoService.ingresoDePaciente(paciente);
 		
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	
 	@PostMapping("/insertar")
-    public ResponseEntity<?> create(@RequestBody Medico medico){
-		if(StringUtils.isBlank(medico.getNombre())) {
-			return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-		}
-        Medico m = new Medico(null, medico.getNombre(), medico.getApellidos(), medico.getTelefono(), medico.getEspecialidad(), null);
-        medicoService.insertarMedico(m);
+    public ResponseEntity<?> create(@RequestBody Ingreso ingreso){
+        Ingreso m = new Ingreso(null, ingreso.getNumHabitacion(), ingreso.getCama(), ingreso.getFechaIngreso(), ingreso.getMedico(), ingreso.getPaciente());
+        ingresoService.insertarIngreso(m);
         return new ResponseEntity(m, HttpStatus.OK);
     }
 	
 	@DeleteMapping("/borrar/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")Long id){
-        medicoService.borrarMedico(id);
-        return new ResponseEntity(new Mensaje("Médico eliminado"), HttpStatus.OK);
-    }
-	
-	@GetMapping("/detalle/{id}")
-	public ResponseEntity<Medico> getByCodigoMedico(@PathVariable("id")Long id){
-		Medico m = medicoService.getOne(id).get();
-		return new ResponseEntity(m, HttpStatus.OK);
-	}
-	
-	
-	
-	
-	@PutMapping("/actualizar/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")Long id, @RequestBody Medico medico){
-        Medico m = medicoService.getOne(id).get();
-        m.setNombre(medico.getNombre());
-        m.setApellidos(medico.getApellidos());
-        m.setTelefono(medico.getTelefono());
-        m.setEspecialidad(medico.getEspecialidad());
-        medicoService.insertarMedico(m);
-        return new ResponseEntity(m, HttpStatus.OK);
+		ingresoService.borrarIngreso(id);
+        return new ResponseEntity(new Mensaje("Ingreso eliminado"), HttpStatus.OK);
     }
 	
 	

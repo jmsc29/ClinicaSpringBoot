@@ -1,6 +1,7 @@
 package com.dam.tarea6_JMSC.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.dam.tarea6_JMSC.entidades.*;
 
@@ -14,7 +15,9 @@ public interface IngresoServiceI {
 	
 	public List<Ingreso> ingresoDeMedico(Medico medico);
 	
-	public void eliminarIngresoPaciente(Paciente paciente);
+	public void borrarIngreso(Long codigoIngreso);
+	
+	public Optional<Ingreso> getOne(Long codigoMedico);
 	
 
 

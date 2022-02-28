@@ -25,6 +25,25 @@ import lombok.NoArgsConstructor;
 @Table(name = "pacientes")
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Paciente implements Serializable{
+	
+	
+
+	public Paciente(String nombre, String apellidos, String direccion, String poblacion, String provincia, String codigoPostal, String telefono, String fechaNacimiento) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.direccion = direccion;
+		this.poblacion = poblacion;
+		this.provincia = provincia;
+		this.codigoPostal = codigoPostal;
+		this.telefono = telefono;
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public Paciente(Long codigoPaciente) {
+		this.codigoPaciente = codigoPaciente;
+	}
+
+
 
 	/**
 	 * 
@@ -49,8 +68,7 @@ public class Paciente implements Serializable{
 	
 	private String telefono;
 	
-	@Temporal(TemporalType.DATE)
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	
 	@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente", cascade = CascadeType.ALL)
